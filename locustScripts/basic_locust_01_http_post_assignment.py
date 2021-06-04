@@ -11,11 +11,13 @@ class UserBehavior(SequentialTaskSet):
 
     @task
     def launch_URL(self):
-        self.client.get("/mercurycruise.php", name="launch_mercury")
+        resp_get=self.client.get("/mercurycruise.php", name="launch_mercury")
+        print(resp_get.text)
 
     @task
     def login(self, login_data=login_data):
-        self.client.post("/login.php", data=login_data, name="login_mercury")
+        resp_post=self.client.post("/login.php", data=login_data, name="login_mercury")
+        print(resp_post.text)
 
 
 class MyUser(HttpUser):
