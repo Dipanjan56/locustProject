@@ -4,6 +4,7 @@ from locust import HttpUser, task, between
 class MyUser(HttpUser):
     wait_time = between(1, 2)
     host = "http://demo.guru99.com/test/newtours"
+    # Form Data
     login_data = {"action": "process",
                   "userName": "qamile1@gmail.com",
                   "password": "qamile",
@@ -19,4 +20,4 @@ class MyUser(HttpUser):
     def login(self, login_data=login_data):
         self.client.post("/login.php", data=login_data, name="login_newtours")
 
-# Terminal -> locust -f locustScripts/basic_locust_01_http_post.py
+# Terminal -> locust -f locustScripts/basic_locust_01_http_post_using_form_data.py

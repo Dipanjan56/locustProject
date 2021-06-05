@@ -2,6 +2,8 @@ from locust import HttpUser, task, between, SequentialTaskSet
 
 
 class UserBehavior(SequentialTaskSet):
+
+    # This is form data
     login_data = {"action": "process",
                   "userName": "qamile1@gmail.com",
                   "password": "qamile",
@@ -30,4 +32,4 @@ class MyUser(HttpUser):
 
     tasks = [UserBehavior]
 
-# Terminal -> locust -f locustScripts/basic_locust_01_http_post_assignment.py  -u 1 -r 1
+# Terminal -> locust -f locustScripts/Assignment_basic_locust_01_http_postt.py  -u 1 -r 1
