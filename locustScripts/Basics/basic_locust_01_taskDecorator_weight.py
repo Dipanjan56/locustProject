@@ -14,4 +14,4 @@ class MyUser(User):
         print("I am viewing the product")
 
 
-# Terminal -> locust -f locustScripts/basic_locust_01_taskDecorator_weight.py -u 1 -r 1 -t 15s --headless --only-summary
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_taskDecorator_weight.py -u 1 -r 1 -t 15s --headless --only-summary

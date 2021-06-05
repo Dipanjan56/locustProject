@@ -35,4 +35,4 @@ class MyUser(HttpUser):
 
     tasks = [UserBehavior]
 
-# Terminal -> locust -f locustScripts/basic_locust_01_http_post_catchResponse.py -u 1 -r 1 --headless -t10s
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_http_post_catchResponse.py -u 1 -r 1 --headless -t10s

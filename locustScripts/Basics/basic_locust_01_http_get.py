@@ -9,4 +9,4 @@ class MyUser(HttpUser):
     def launch_URL(self):
         self.client.get("/index.php", name="view_cruise")
 
-# Terminal -> locust -f locustScripts/basic_locust_01_http_get.py
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_http_get.py

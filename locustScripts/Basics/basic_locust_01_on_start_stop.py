@@ -15,4 +15,4 @@ class MyUser(HttpUser):
     def on_stop(self):
         print("I am logging out")
 
-# Terminal -> locust -f locustScripts/basic_locust_01_on_start_stop.py -u 2 -r 1 -t 5s --headless --only-summary
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_on_start_stop.py -u 2 -r 1 -t 5s --headless --only-summary

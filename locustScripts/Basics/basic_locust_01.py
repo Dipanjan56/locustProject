@@ -9,4 +9,4 @@ class MyUser(User):
         print("I am logging into URL")
 
 
-# Terminal -> locust -f locustScripts/basic_locust_01.py
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01.py

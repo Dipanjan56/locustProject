@@ -15,4 +15,4 @@ class MyUser(User):
         def view_product(self):
             print("I am viewing the product")
 
-# Terminal -> locust -f locustScripts/basic_locust_01_taskSet2.py -u 1 -r 1 -t 15s --headless --only-summary
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_taskSet2.py -u 1 -r 1 -t 15s --headless --only-summary

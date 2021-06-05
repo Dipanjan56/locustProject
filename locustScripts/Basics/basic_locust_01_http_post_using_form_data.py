@@ -20,4 +20,4 @@ class MyUser(HttpUser):
     def login(self, login_data=login_data):
         self.client.post("/login.php", data=login_data, name="login_newtours")
 
-# Terminal -> locust -f locustScripts/basic_locust_01_http_post_using_form_data.py
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_http_post_using_form_data.py
