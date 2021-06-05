@@ -16,7 +16,7 @@ class MyUser(HttpUser):
     # now lets say, user take more than constant_pacing time i.e task_time > constant_pacing_time
     # then wait_time = 0, i.e. user won't wait for anytime and immediately starts the next task
     wait_time = constant_pacing(5)
-    host = "http://newtours.demoaut.com/"
+    host = "http://demo.guru99.com/test/newtours/"
 
     @task
     def login_URL(self):

@@ -4,7 +4,7 @@ from locust import HttpUser, task, between
 class MyWebUser(HttpUser):
     wait_time = between(1, 2)
     weight = 3 # will increase the probability of executing this task 3 times more than the other tasks
-    host = "http://newtours.demoaut.com/"
+    host = "http://demo.guru99.com/test/newtours/"
 
     @task
     def login_URL(self):
@@ -14,7 +14,7 @@ class MyWebUser(HttpUser):
 class MyMobileUser(HttpUser):
     wait_time = between(1, 2)
     weight = 1
-    host = "http://newtours.demoaut.com/"
+    host = "http://demo.guru99.com/test/newtours/"
 
     @task
     def login_URL(self):

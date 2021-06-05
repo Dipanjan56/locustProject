@@ -17,7 +17,7 @@ def script_stop(**kwargs):
 
 class MyUser(HttpUser):
     wait_time = between(1, 2)
-    host = "http://newtours.demoaut.com/"
+    host = "http://demo.guru99.com/test/newtours/"
 
     # it will execute only once per user before the execution of all repetitive tasks
     # this has to be written inside any class

@@ -7,3 +7,6 @@ class MyUser(User):
     @task
     def login_URL(self):
         print("I am logging into URL")
+
+
+# Terminal -> locust -f locustScripts/basic_locust_01.py
