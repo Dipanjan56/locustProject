@@ -1,0 +1,25 @@
+#For configuring locust script
+[locust script]
+locustfile: basics/basic_locust_01_master_slave.py
+host: http://newtours.demoaut.com
+
+#For configuring worker mode
+[locust worker mode]
+worker: true
+master-host: 127.0.0.1
+master-port: 5557
+
+
+[locust headless]
+#headless: true
+#users:5
+#hatch-rate: 1
+#run-time: 20s
+
+# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/worker.yml
+
+
+
+
+
+

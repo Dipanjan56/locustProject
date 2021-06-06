@@ -1,0 +1,31 @@
+#For configuring locust script
+[locust script]
+locustfile: basics/basic_locust_01_master_slave.py
+host: http://newtours.demoaut.com
+
+#For configuring master mode
+[locust master mode]
+master: true
+expect-workers: 2
+
+##For configuring step load model -> this is deprecated
+#[locust stepload]
+#step-load: true
+#step-users: 4
+#step-time: 2
+
+[locust headless]
+headless: true
+users:5
+hatch-rate: 1
+run-time: 20s
+
+
+# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/master.yml
+
+
+
+
+
+
+
