@@ -36,4 +36,4 @@ class WebsiteUser(HttpUser):
     host = "https://api.todoist.com"
     wait_time = between(5, 10)
 
-# Terminal -> locust -f locustScripts/Basics/basic_locust_01_http_post_using_json.py --headless --run-time=10 --logfile=logFiles/log.txt
+# Terminal -> locust -f locustScripts/Basics/basic_locust_01_http_post_using_json.py --headless --run-time=10 --logfile=LogFiles/log.txt
