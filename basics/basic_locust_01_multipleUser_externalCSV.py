@@ -1,13 +1,10 @@
 from locust import HttpUser, SequentialTaskSet, task, between
+import random
+from utilities.csvreader import CSVReader
 
-# list of tuples
-UserName = [
-    ("qamile1@gmail.com", "qamile"),
-    ("qamile2@gmail.com", "qamile"),
-    ("qamile3@gmail.com", "qamile"),
-    ("qamile4@gmail.com", "qamile"),
-    ("qamile5@gmail.com", "qamile")
-]
+my_reader = CSVReader(
+    "/Users/dipanjankundu/My Personal Projects/PycharmProjects/locustProject/testdata/credential_csv_newtour.csv").read_data()
+
 formdata1 = {
     "tripType": "roundtrip",
     "passCount": "1",
@@ -89,21 +86,17 @@ class UserBehaviour(SequentialTaskSet):
         # Get username /pwd
         self.userName = ""
         self.Password = ""
-        # if we give user number more than the users in the list, then we need this code below
-        # unless if -u 7 and users in list is 5 then it will throw error for not getting the 6th and 7th user
-        if len(UserName) > 0:
-            self.userName, self.Password = UserName.pop()
-            print(self.userName, self.Password)
-            UserName.insert(0, (self.userName, self.Password))
-            print(UserName)
-        else:
-            print("User List is empty")
+
+        self.userName = random.choice(my_reader)['UserName']
+        self.Password = random.choice(my_reader)['Password']
+        print(self.userName, self.Password)
+        print(my_reader)
 
         with self.client.post("/login.php", name="login", data={"action": "process", "userName": self.userName,
                                                                 "password": self.Password, "login.x": "41",
                                                                 "login.y": "12"}, catch_response=True) as resp:
 
-            if "Find a Flight" in resp.text:
+            if ("Find a Flight") in resp.text:
                 resp.success()
             else:
                 resp.failure("failed to login")
@@ -115,7 +108,7 @@ class UserBehaviour(SequentialTaskSet):
         # Select a Flight
         with self.client.post("/mercuryreservation2.php", data=formdata1, name="Find_Flight",
                               catch_response=True) as res_1:
-            if "Select a Flight" in res_1.text:
+            if ("Select a Flight") in res_1.text:
                 res_1.success()
             else:
                 res_1.failure("find flight failed" + res_1.text)
@@ -127,7 +120,7 @@ class UserBehaviour(SequentialTaskSet):
         # Book a Flight
         with self.client.post("/mercurypurchase.php", data=formdata2, name="Select_Flight",
                               catch_response=True) as res_2:
-            if "Book a Flight" in res_2.text:
+            if ("Book a Flight") in res_2.text:
                 res_2.success()
             else:
                 res_2.failure("select flight failed" + res_2.text)
@@ -140,7 +133,7 @@ class UserBehaviour(SequentialTaskSet):
         # Flight Confirmation
         with self.client.post("/mercurypurchase2.php", data=formdata3, name="Book_Flight",
                               catch_response=True) as res_3:
-            if "Flight Confirmation" in res_3.text:
+            if ("Flight Confirmation") in res_3.text:
                 res_3.success()
             else:
                 res_3.failure("book flight failed" + res_3.text)
@@ -151,5 +144,4 @@ class MyUser(HttpUser):
     host = "http://newtours.demoaut.com"
     tasks = [UserBehaviour]
 
-
-# Terminal -> locust -f locustScripts/Basics/basic_locust_01_multipleUser_externalModule.py -u 5 -r 1 --headless
+# Terminal -> locust -f basics/basic_locust_01_multipleUser_externalCSV.py -u 5 -r 1 --headless

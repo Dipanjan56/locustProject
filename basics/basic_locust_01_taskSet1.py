@@ -18,4 +18,4 @@ class MyUser(User):
     # defining another task class as list
     tasks = [UserBehaviour]
 
-# Terminal -> locust -f locustScripts/Basics/basic_locust_01_taskSet1.py -u 1 -r 1 -t 15s --headless --only-summary
+# Terminal -> locust -f basics/basic_locust_01_taskSet1.py -u 1 -r 1 -t 15s --headless --only-summary

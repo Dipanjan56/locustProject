@@ -20,4 +20,4 @@ class MyUser(User):
     # defining tasks as dictionary, giving them the weightage here only
     tasks = {add_cart: 6, view_product: 3}
 
-# Terminal -> locust -f locustScripts/Basics/basic_locust_01_taskAttribute_weight.py -u 1 -r 1 -t 15s --headless --only-summary
+# Terminal -> locust -f basics/basic_locust_01_taskAttribute_weight.py -u 1 -r 1 -t 15s --headless --only-summary
