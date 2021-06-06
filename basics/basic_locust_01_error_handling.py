@@ -1,4 +1,4 @@
-from locust import HttpUser,SequentialTaskSet,task,between
+from locust import HttpUser, SequentialTaskSet, task, between
 from locust.exception import StopUser
 import sys
 import random
@@ -6,18 +6,18 @@ import os
 import logging
 import time
 
-Root_Dir=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+Root_Dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 sys.path.append(Root_Dir)
 
-data_folder=os.path.join(Root_Dir,"data")
-file_path=os.path.join(data_folder,"credential_csv_newtour.csv")
+data_folder = os.path.join(Root_Dir, "data")
+file_path = os.path.join(data_folder, "credential_csv_newtour.csv")
 
-from utilities.csvreader import CSVReader
+from utilities.csv_utility import CSVReader
 
-my_reader=CSVReader(file_path).read_data()
+my_reader = CSVReader(file_path).read_data()
 
-logger=logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 formdata1 = {
     "tripType": "roundtrip",
@@ -97,9 +97,9 @@ formdata3 = {
 class UserBehaviour(SequentialTaskSet):
 
     def on_start(self):
-        #Get username /pwd
-        self.userName=""
-        self.Password=""
+        # Get username /pwd
+        self.userName = ""
+        self.Password = ""
 
         self.userName = random.choice(my_reader)['UserName']
         self.Password = random.choice(my_reader)['Password']
@@ -112,66 +112,68 @@ class UserBehaviour(SequentialTaskSet):
             else:
                 resp.failure("failed to launch URL")
                 logger.critical("failed to launch URL")
-                #Exit test run
+                # Exit test run
                 self.parent.environment.runner.quit()
 
-
-
-        with self.client.post("/login.php", name="login", data={"action": "process","userName": self.userName,
-                                                           "password": self.Password,"login.x": "41","login.y": "12"}, catch_response=True) as resp:
+        with self.client.post("/login.php", name="login", data={"action": "process", "userName": self.userName,
+                                                                "password": self.Password, "login.x": "41",
+                                                                "login.y": "12"}, catch_response=True) as resp:
 
             time.sleep(2)
             if ("Find a Flight") in resp.text:
                 resp.success()
-                logger.info("login successful \t" +self.userName)
+                logger.info("login successful \t" + self.userName)
             else:
                 resp.failure("failed to login")
-                logger.critical("login failed \t" +self.userName)
-                #Exit User
+                logger.critical("login failed \t" + self.userName)
+                # Exit User
                 raise StopUser()
 
     @task()
     def find_flight(self):
 
-        #Select a Flight
-        with self.client.post("/mercuryreservation2.php", data=formdata1,name="Find_Flight",catch_response=True) as res_1:
+        # Select a Flight
+        with self.client.post("/mercuryreservation2.php", data=formdata1, name="Find_Flight",
+                              catch_response=True) as res_1:
             time.sleep(2)
-            if("Select a Flight") in res_1.text:
+            if ("Select a Flight") in res_1.text:
                 res_1.success()
                 logger.info("find flight successful \t" + self.userName)
             else:
-                res_1.failure("find flight failed"+res_1.text)
+                res_1.failure("find flight failed" + res_1.text)
                 logger.error("find flight failed \t" + self.userName)
-
 
     @task()
     def select_flight(self):
 
-        #Book a Flight
-        with self.client.post("/mercurypurchase.php", data=formdata2,name="Select_Flight",catch_response=True) as res_2:
+        # Book a Flight
+        with self.client.post("/mercurypurchase.php", data=formdata2, name="Select_Flight",
+                              catch_response=True) as res_2:
             time.sleep(2)
-            if("Book a Flight") in res_2.text:
+            if ("Book a Flight") in res_2.text:
 
                 res_2.success()
                 logger.info("Select a Flight successful \t" + self.userName)
             else:
-                res_2.failure("select flight failed"+res_2.text)
+                res_2.failure("select flight failed" + res_2.text)
                 logger.error("Select a Flight failed \t" + self.userName)
 
     @task()
     def book_flight(self):
 
-        #Flight Confirmation
-        with self.client.post("/mercurypurchase2.php", data=formdata3,name="Book_Flight",catch_response=True) as res_3:
+        # Flight Confirmation
+        with self.client.post("/mercurypurchase2.php", data=formdata3, name="Book_Flight",
+                              catch_response=True) as res_3:
             time.sleep(2)
-            if("Flight Confirmation") in res_3.text:
+            if ("Flight Confirmation") in res_3.text:
                 res_3.success()
                 logger.info("Book a Flight successful \t" + self.userName)
             else:
-                res_3.failure("book flight failed"+res_3.text)
+                res_3.failure("book flight failed" + res_3.text)
                 logger.error("Book a Flight failed \t" + self.userName)
 
+
 class MyUser(HttpUser):
-    wait_time=between(1,2)
+    wait_time = between(1, 2)
     # host="http://newtours.demoaut.com"
-    tasks=[UserBehaviour]
+    tasks = [UserBehaviour]
