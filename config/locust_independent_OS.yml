@@ -1,0 +1,13 @@
+[locust run]
+host: http://newtours.demoaut.com
+locustfile: basics/basic_locust_01_OS_independent_with_OS_module.py
+
+[headless mode]
+headless: true
+users:5
+hatch-rate: 1
+run-time: 20s
+
+# if we need run in UI mode, then we need to comment out the code below headless mode
+# this is very useful when we use AWS EC2 instance
+# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_independent_OS.yml
