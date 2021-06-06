@@ -1,13 +1,6 @@
-from locust import HttpUser, SequentialTaskSet, TaskSet, task, between
+from locust import task, HttpUser, between, SequentialTaskSet, TaskSet
+from utilities import csv_utility
 import re
-import sys
-import random
-
-sys.path.append("C:\MyLocustProjects\Demo_LocustProject")
-
-from utilities.csv_utility import CSVReader
-
-my_reader = CSVReader("C:\MyLocustProjects\Demo_LocustProject\data\credential_csv_borland.csv").read_data()
 
 
 class UserBehaviour(TaskSet):
@@ -21,11 +14,12 @@ class UserBehaviour(TaskSet):
     def on_start(self):
         self.userName = ""
         self.Password = ""
-
-        self.userName = random.choice(my_reader)['UserName']
-        self.Password = random.choice(my_reader)['Password']
+        my_user = self.parent.my_user_data.pop()
+        self.userName = my_user['UserName']
+        self.Password = my_user['Password']
         print(self.userName, self.Password)
-        print(my_reader)
+        self.parent.my_user_data.insert(0, {'UserName': self.userName, 'Password': self.Password})
+        print(self.parent.my_user_data)
 
         print("I will launch URL")
         res = self.client.get("/InsuranceWebExtJS/index.jsf", name="launchURL",
@@ -190,3 +184,5 @@ class MyUser(HttpUser):
     wait_time = between(1, 2)
     tasks = [UserBehaviour]
     host = "http://demo.borland.com"
+    my_user_data = csv_utility.read("C:\MyLocustProjects\Demo_LocustProject\data\credential_csv_borland.csv")
+    print(my_user_data)

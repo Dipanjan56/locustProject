@@ -1,6 +1,6 @@
 from locust import HttpUser, SequentialTaskSet, task, between
 import random
-from utilities.csvreader import CSVReader
+from utilities.csv_utility import CSVReader
 
 my_reader = CSVReader(
     "/Users/dipanjankundu/My Personal Projects/PycharmProjects/locustProject/testdata/credential_csv_newtour.csv").read_data()
