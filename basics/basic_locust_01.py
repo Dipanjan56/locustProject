@@ -39,3 +39,4 @@ class MyUser(User):
 
 # If we want to download data when we are running in headless mode ->
 # Terminal -> locust -f basics/basic_locust_01.py -u 5 -r 1 -t 10s --headless --csv=reportdata/myData
+# now if we run this: locust -f basics/basic_locust_01.py -u 5 -r 1 --headless --csv=reportdata/myData -t2s --run-time 10s
