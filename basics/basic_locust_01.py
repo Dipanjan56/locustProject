@@ -39,4 +39,6 @@ class MyUser(User):
 
 # If we want to download data when we are running in headless mode ->
 # Terminal -> locust -f basics/basic_locust_01.py -u 5 -r 1 -t 10s --headless --csv=reportdata/myData
+# here above it means it will download the data after completion of the run i.e. 10 sec
 # now if we run this: locust -f basics/basic_locust_01.py -u 5 -r 1 --headless --csv=reportdata/myData -t2s --run-time 10s
+# this means it will periodically download data in csv format in the interval of 2s and the run will complete after 10s
