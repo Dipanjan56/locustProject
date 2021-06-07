@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  master:
+    image: locustio/locust
+    ports:
+      - "8089:8089"
+      - "5557:5557"
+    volumes:
+      - $HOME/Personal_Projects/PycharmProjects/locustProject:/mnt/locust
+    command: -f /mnt/locust/basics/basic_locust_01_master_slave_docker_compose.py --master -H http://master:8089
+
+  worker:
+    image: locustio/locust
+    volumes:
+      - $HOME/Personal_Projects/PycharmProjects/locustProject:/mnt/locust
+    command: -f /mnt/locust/basics/basic_locust_01_master_slave_docker_compose.py --worker --master-host master
+# command: -f /mnt/locust/basics/basic_locust_01_master_slave_docker_compose.py --worker --master-host=master_machine_ip_address
+# [in ec2 instance]
+# we have to copy this file to all teh master and worker machine's locust project
+
+# Terminal -> docker-compose -f locust_docker_compose.yml config
+# this is validate teh config file -> if its valid it will show the content of the file
+
+# Terminal[Master machine] -> docker-compose up master
+# Terminal[Worker machine] -> docker-compose up worker
+# if we want to scale up the worker services ->
+# Terminal [Worker machine] -> docker-compose up --scale worker=4 -> it will create 4 instances of worker
+
+# if we run docker ps -a -> we will see 4 worker containers are up
+
