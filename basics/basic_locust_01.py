@@ -1,4 +1,8 @@
 from locust import User, task, between
+import locust.stats
+
+# if we do this then we dont need to worry in command line for the interval part
+locust.stats.CSV_STATS_INTERVAL_SEC = 2
 
 
 class MyUser(User):
@@ -42,3 +46,4 @@ class MyUser(User):
 # here above it means it will download the data after completion of the run i.e. 10 sec
 # now if we run this: locust -f basics/basic_locust_01.py -u 5 -r 1 --headless --csv=reportdata/myData -t2s --run-time 10s
 # this means it will periodically download data in csv format in the interval of 2s and the run will complete after 10s
+# Also we can do this with the above code at line number 5, without using '-t2s --run-time 10s' in cmd
