@@ -130,7 +130,7 @@ class MyUser(HttpUser):
     host = "http://demo.guru99.com/test/newtours"
     tasks = [UserBehaviour]
 
-# Terminal -> docker run -p 8089:8089 -v $HOME/Personal_Projects/PycharmProjects/locustProject:/mnt/locust locustio/locust —config=$HOME/Personal_Projects/PycharmProjects/locustProject/config/locust_docker.yml --logfile /mnt/locust/abc.log
+# Terminal -> docker run -p 8089:8089 -v $HOME/Personal_Projects/PycharmProjects/locustProject:/mnt/locust locustio/locust —config=/mnt/locust/config/locust_docker.yml --logfile /mnt/locust/abc.log
 
 # install docker desktop first
 # for this you have to first pull the docker image of locust -> docker pull locustio/locust

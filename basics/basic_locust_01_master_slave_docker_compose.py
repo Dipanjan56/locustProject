@@ -130,23 +130,12 @@ class MyUser(HttpUser):
     host = "http://demo.guru99.com/test/newtours"
     tasks = [UserBehaviour]
 
-# To achieve master slave configuration, lets create 3 terminal session and name those as Master, Worker_1, Worker_2
-# Master Terminal -> locust -f basics/basic_locust_01_master_slave.py --master
-# when we hit this command, then we have to launch locust web interface and there we can see one additional tab called "Workers"
+# Terminal -> docker-compose -f locust_docker_compose.yml config
+# this is validate teh config file -> if its valid it will show the content of the file
 
-# Worker_1 and Worker_2 Terminal [Option 1] -> locust -f basics/basic_locust_01_master_slave.py --worker
-# For this option, it means master is in the localhost
+# Terminal[Master machine] -> docker-compose up master
+# Terminal[Worker machine] -> docker-compose up worker
+# if we want to scale up the worker services ->
+# Terminal [Worker machine] -> docker-compose up --scale worker=4 -> it will create 4 instances of worker
 
-# Worker_1 or Worker_2 Terminal [Option 2] -> locust -f basics/basic_locust_01_master_slave.py --worker --master-host host_ip --master-port port_number
-# We will choose this option when master host is in different than workers
-# default port which master listens is 5557[then we dont need to mention prt number], but in case it does differntly
-# then we need to provide the port number as well
-
-# For the above scenario, Both the workers are independent of each other and can pick any user from csv
-# It might be the case that both teh worker can pick the same user from csv
-# Also we do some configuration so that workers should convey their state to each other [need to research]
-
-# for headless mode ->
-# Master Terminal -> locust -f basics/basic_locust_01_master_slave.py --master --headless -u 4 -r 2
-# If we need to wait for the workers to up and running first and then only start the test, then
-# Master Terminal -> locust -f basics/basic_locust_01_master_slave.py --master --expect-workers=2 --headless -u 4 -r 2
+# if we run docker ps -a -> we will see 4 worker containers are up
