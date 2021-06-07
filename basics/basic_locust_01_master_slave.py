@@ -144,10 +144,9 @@ class MyUser(HttpUser):
 
 # For the above scenario, Both the workers are independent of each other and can pick any user from csv
 # It might be the case that both teh worker can pick the same user from csv
-# Also we do some cofiguration so that workers should convey their state to each other [need to research]
+# Also we do some configuration so that workers should convey their state to each other [need to research]
 
 # for headless mode ->
 # Master Terminal -> locust -f basics/basic_locust_01_master_slave.py --master --headless -u 4 -r 2
 # If we need to wait for the workers to up and running first and then only start the test, then
 # Master Terminal -> locust -f basics/basic_locust_01_master_slave.py --master --expect-workers=2 --headless -u 4 -r 2
-

@@ -167,16 +167,16 @@ class MyUser(HttpUser):
 # Choose between DEBUG/INFO/WARNING/ERROR/CRITICAL. Default is INFO. The short-hand version is -L.
 
 # Default log level -> INFO
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log
 # It will print all kind of messages
 
 # Default log level -> DEBUG
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log --loglevel DEBUG
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log --loglevel DEBUG
 # It will print only running instance messages [no further info]
 
 # Default log level -> ERROR
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log --loglevel ERROR
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log --loglevel ERROR
 # It will print only error messages
 
 # If we want to skip log level set up then
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log --skip-log-setup
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust_logging.yml --logfile logfiles/bookFlight.log --skip-log-setup

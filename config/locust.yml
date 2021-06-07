@@ -10,4 +10,4 @@ run-time: 20s
 
 # if we need run in UI mode, then we need to comment out the code below headless mode
 
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust.yml
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust.yml

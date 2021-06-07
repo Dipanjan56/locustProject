@@ -155,7 +155,7 @@ class MyUser(HttpUser):
     tasks = [UserBehaviour]
 
 # This script is very useful when we use AWS EC2 instance
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_independent_OS.yml
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust_independent_OS.yml
 
 # EC2 instance ->
 # python3.8 -v
@@ -165,4 +165,4 @@ class MyUser(HttpUser):
 # pwd
 # mkdir projectName
 # then copy all the files in that project directory
-# Then run the script -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/locust_independent_OS.yml
+# Then run the script -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust_independent_OS.yml

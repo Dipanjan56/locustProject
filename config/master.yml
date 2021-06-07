@@ -21,7 +21,7 @@ hatch-rate: 1
 run-time: 20s
 
 
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/master.yml
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/master.yml
 
 
 

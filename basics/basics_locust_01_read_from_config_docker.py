@@ -130,4 +130,13 @@ class MyUser(HttpUser):
     host = "http://demo.guru99.com/test/newtours"
     tasks = [UserBehaviour]
 
-# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/locust.yml
+# Terminal -> docker run -p 8089:8089 -v $HOME/Personal_Projects/PycharmProjects/locustProject:/mnt/locust locustio/locust —config=$HOME/Personal_Projects/PycharmProjects/locustProject/config/locust_docker.yml --logfile /mnt/locust/abc.log
+
+# install docker desktop first
+# for this you have to first pull the docker image of locust -> docker pull locustio/locust
+# docker image -> it show the image list uu have pulled till now
+# Then run the first command [docker run ....]
+# docker ps -> it will show the current container that is running
+# docker ps -a -> it will show the previous containers as well
+# docker stop containerID -> it will stop the container
+# docker rm $(docker ps -a -q) -> it will kill all the containers

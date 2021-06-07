@@ -7,6 +7,7 @@ host: http://newtours.demoaut.com
 [locust worker mode]
 worker: true
 master-host: 127.0.0.1
+# master-host: public_ip_address of the master machine [if its not in the same machine/local host]
 master-port: 5557
 
 
@@ -16,7 +17,7 @@ master-port: 5557
 #hatch-rate: 1
 #run-time: 20s
 
-# Terminal -> locust --config=/Users/dipanjankundu/My\ Personal\ Projects/PycharmProjects/locustProject/config/worker.yml
+# Terminal -> locust --config=/Users/dipanjankundu/Personal_Project/PycharmProjects/locustProject/config/worker.yml
 
 
 

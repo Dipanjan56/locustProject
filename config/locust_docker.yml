@@ -1,6 +1,6 @@
 [locust run]
 host: http://newtours.demoaut.com
-locustfile: basics/basic_locust_01_logging.py
+locustfile: /mnt/locust/basics/basics_locust_01_read_from_config_docker.py
 
 [headless mode]
 headless: true
