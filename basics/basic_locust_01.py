@@ -35,3 +35,7 @@ class MyUser(User):
 # for this we have to give this parameter -> --step-load [deprecated in locust 1.3]
 # Terminal -> locust -f basics/basic_locust_01.py -u 4 -r 1 -t 10s --step-load [deprecated in locust 1.3]
 # Latest: for this we need to use LoadTestShapeClass : https://docs.locust.io/en/stable/generating-custom-load-shape.html
+
+
+# If we want to download data when we are running in headless mode ->
+# Terminal -> locust -f basics/basic_locust_01.py -u 5 -r 1 -t 10s --headless --csv=reportdata/myData

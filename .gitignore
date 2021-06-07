@@ -2,3 +2,4 @@ venv
 .idea
 logfiles/*
 .DS_Store
+reportdata
