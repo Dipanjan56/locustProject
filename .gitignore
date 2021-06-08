@@ -2,5 +2,4 @@ venv
 .idea
 logfiles/*
 .DS_Store
-reportdata
 basics/__pycache__/
